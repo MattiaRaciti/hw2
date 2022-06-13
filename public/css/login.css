@@ -1,0 +1,128 @@
+.signup{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 280px;
+	color: black;
+}
+
+
+#details p {
+	color: black;
+	width: 45%
+}
+
+#details{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#details motto{
+	color: black;
+	width: 45%
+}
+
+.main_piscturesDB{
+  margin: 100px 125px;
+  text-align: center;
+}
+
+section h1{
+	font-size: 2.7em;
+	color: rgb(31, 132, 249);
+	letter-spacing: 2px;
+	margin-bottom: 10px;
+}
+
+section h2{
+	font-size: 1.8em;
+	color: rgb(31, 132, 249);
+	letter-spacing: 2px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+section h3{
+	font-size: 1.8em;
+	color: rgb(31, 132, 249);
+	letter-spacing: 2px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+section label{
+	font-size: 1em;
+	color: black;
+}
+
+section span{
+	font-size: 0.8em;
+	color: red;
+}
+
+#submit{
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px solid rgba(31, 31, 31, 0.3);
+	background-color: rgb(59, 133, 38);
+	border-radius: 100px;
+	color: white;
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+#submit:hover {
+	background-color: rgb(31, 31, 31);
+	color: white;
+}
+
+.button{
+	padding: 0px 10px;
+	margin-top: 5px;
+	border: 2px solid rgba(31, 31, 31, 0.3);
+	background-color: rgb(59, 133, 38);
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 0.9em;
+}
+
+.button:hover {
+	background-color: rgb(31, 31, 31);
+	color: white;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  color: rgba(26, 26, 26, .7);
+  font-family: 'Montserrat', serif;
+  font-size: 21px;
+  margin: 0;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 145px;
+	
+	background-color: rgb(55, 103, 133);
+	color: rgb(0, 0, 0);
+	text-align: center;
+}
+
+
+footer p {
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+

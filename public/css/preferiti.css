@@ -1,0 +1,139 @@
+span.error{
+	color: red;
+	font-size: 1.5em;
+}
+
+#error-view{
+	display: flex;
+	justify-content: center;
+}
+
+header h1 em {
+  font-size: 1em;
+  letter-spacing: 1px;
+  color : white;
+}
+#links {
+  font-family: 'Montserrat', serif;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: start;
+}
+
+#links a {
+  margin: 15px;
+  cursor: pointer;
+}
+
+#links a2 {
+  font-size: 1.2em;
+  color: black;
+}
+
+nav {
+  font-size: 1.1em;
+  padding: 30px;
+  margin-bottom: 10px;
+
+  justify-content: start;
+  align-items: flex-start;
+}
+
+header h1 {
+  font-size: 2.5em;
+  line-height: 1.5;
+  color: black;
+}
+
+header {
+  background-position: center;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  background-image: url("../img/sfondo_intestazione.jpg");
+  background-size: cover;
+  background-position: top;
+}
+
+.button{
+	padding: 8px 12px;
+	border: 2px solid rgba(31, 31, 31, 0.3);
+	margin: 8px;
+	background-color: rgb(59, 133, 38);
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: rgb(31, 31, 31);
+	color: white;
+}
+
+.favorite_button{
+	padding: 0px 10px;
+	border: 2px solid rgba(31, 31, 31, 0.3);
+	margin-top: 7px;
+	margin-bottom: 5px;
+	background-color: rgb(153, 0, 0);
+	color: white;
+	cursor: pointer;
+	border-radius: 100px;
+}
+
+.favorite_button:hover {
+	background-color: rgb(31, 31, 31);
+	color: white;
+}
+
+
+#library-view .block {
+  margin: 10px;
+  border: 1px solid slategray;
+  padding: 10px;
+  max-width: 250px;  
+  max-height: 250px; 
+  display: flex;
+  flex-direction:column;
+  background-color: white; 
+}
+
+#library-view .block img{
+	width: 100%;
+	height: 85%;
+}
+
+#library-view .block:hover {
+	background-color: #cfe3ff;
+}
+
+#search-view p{
+	color: rgb(0, 0, 0);
+	font-size: 1.2em;
+}
+
+#library-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 15px 20px;
+}
+
+body {
+  color: rgba(26, 26, 26, .7);
+  font-family: 'Montserrat', serif;
+  font-size: 21px;
+  margin: 0;
+}
+
+@media (max-width: 875px) {
+  a2 {
+    display:none;
+  }
+}
