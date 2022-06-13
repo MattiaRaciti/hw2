@@ -23,7 +23,13 @@ function onLikeNumber(json){
 	const header_view = document.querySelector('#links');
 	
 	const header = document.createElement('a2');
-	var header_text = document.createTextNode("La tua collezione piace a " + likes + " persone");
+	if(likes != 1){
+		var header_text = document.createTextNode("La tua collezione piace a " + likes + " persone");
+	}
+	else{
+		var header_text = document.createTextNode("La tua collezione piace a " + likes + " persona");
+	}
+
 	header.appendChild(header_text);
 	header_view.appendChild(header);
 	header.classList.add('favorites_text');
