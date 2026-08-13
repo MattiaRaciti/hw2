@@ -7,17 +7,47 @@ yarn-error.log
 bootstrap/compiled.php
 app/storage/
 
-# Laravel 5 & Lumen specific
+# Laravel 5 and Lumen public files
 public/storage
 public/hot
 
-# Laravel 5 & Lumen specific with changed public path
+# Laravel 5 and Lumen with changed public path
 public_html/storage
 public_html/hot
 
+# Laravel-generated bootstrap cache
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+# Laravel-generated application cache
+/storage/framework/cache/*
+!/storage/framework/cache/.gitignore
+!/storage/framework/cache/data/
+
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitignore
+
+# Laravel-generated sessions
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitignore
+
+# Laravel-compiled Blade views
+/storage/framework/views/*
+!/storage/framework/views/.gitignore
+
+# Laravel logs
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Local keys and environment configuration
 storage/*.key
 .env
+.env.backup
+
+# Development environment files
 Homestead.yaml
 Homestead.json
 /.vagrant
+
+# Test cache
 .phpunit.result.cache
