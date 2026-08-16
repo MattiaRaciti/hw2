@@ -2,27 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\CollectionController;
 
-Route::get('/', 'App\Http\Controllers\SignupController@login_form');
-Route::post('/', 'App\Http\Controllers\SignupController@do_login');
 
-Route::get('login', 'App\Http\Controllers\SignupController@login_form');
-Route::post('login', 'App\Http\Controllers\SignupController@do_login');
-Route::get('signup', 'App\Http\Controllers\SignupController@register_form');
-Route::post('signup', 'App\Http\Controllers\SignupController@do_register');
-Route::get('logout', 'App\Http\Controllers\SignupController@logout');
-Route::get('check_username/{search_param}', 'App\Http\Controllers\SignupController@check_username');
+Route::get('/', [SignupController::class, 'login_form']);
+Route::post('/', [SignupController::class, 'do_login']);
 
-Route::get('home', 'App\Http\Controllers\CollectionController@home');
-Route::get('favorites/list', 'App\Http\Controllers\CollectionController@list');
-Route::get('favorites/add/{name}', 'App\Http\Controllers\CollectionController@add');
-Route::get('search_image/{search_param}', 'App\Http\Controllers\CollectionController@search_image');
-Route::get('add_favorite', 'App\Http\Controllers\CollectionController@add_favorite');
-Route::get('remove_favorite/{favorite_id}', 'App\Http\Controllers\CollectionController@remove_favorite');
-Route::get('preferiti', 'App\Http\Controllers\CollectionController@preferiti');
-Route::get('search_user/{search_param}', 'App\Http\Controllers\CollectionController@search_user');
-Route::get('view_collection/{search_param}', 'App\Http\Controllers\CollectionController@view_collection');
-Route::get('add_like/{search_param}', 'App\Http\Controllers\CollectionController@add_like');
-Route::get('get_like_number', 'App\Http\Controllers\CollectionController@get_like_number');
-Route::get('undo_like/{search_param}', 'App\Http\Controllers\CollectionController@undo_like');
-?>
+Route::get('login', [SignupController::class, 'login_form']);
+Route::post('login', [SignupController::class, 'do_login']);
+Route::get('signup', [SignupController::class, 'register_form']);
+Route::post('signup', [SignupController::class, 'do_register']);
+Route::get('logout', [SignupController::class, 'logout']);
+Route::get('check_username/{search_param}', [SignupController::class, 'check_username']);
+
+Route::get('home', [CollectionController::class, 'home']);
+Route::get('favorites/list', [CollectionController::class, 'list']);
+Route::post('add_favorite', [CollectionController::class, 'add_favorite']);
+Route::get('search_image/{search_param}', [CollectionController::class, 'search_image']);
+Route::get('remove_favorite/{favorite_id}', [CollectionController::class, 'remove_favorite']);
+Route::get('preferiti', [CollectionController::class, 'preferiti']);
+Route::get('search_user/{search_param}', [CollectionController::class, 'search_user']);
+Route::get('view_collection/{search_param}', [CollectionController::class, 'view_collection']);
+Route::get('add_like/{search_param}', [CollectionController::class, 'add_like']);
+Route::get('get_like_number', [CollectionController::class, 'get_like_number']);
+Route::get('undo_like/{search_param}', [CollectionController::class, 'undo_like']);
