@@ -175,8 +175,20 @@ function onJsonUser(json){
 			block.classList.add('user_block');
 			favorite_button.classList.add('favorite_button');
 			
-			var username_text = document.createTextNode("UTENTE: " + username + "\n" +
-														"ISCRITTO DAL: " + created_at.substring(0, 10));
+			const username_text = document.createElement('span');
+
+			const username_label = document.createTextNode('UTENTE:');
+			const username_value = document.createTextNode(username);
+			const member_since_label = document.createTextNode('ISCRITTO DAL:');
+			const member_since_value = document.createTextNode(created_at.substring(0, 10));
+
+			username_text.appendChild(username_label);
+			username_text.appendChild(document.createElement('br'));
+			username_text.appendChild(username_value);
+			username_text.appendChild(document.createElement('br'));
+			username_text.appendChild(member_since_label);
+			username_text.appendChild(document.createElement('br'));
+			username_text.appendChild(member_since_value);
 			
 			var favorite_button_text = document.createTextNode("Visualizza Preferiti");
 			
@@ -184,8 +196,8 @@ function onJsonUser(json){
 			
 			const img = document.createElement('img');
 			img.src = ("./img/default_user.jpg");
-			block.appendChild(img);
 			
+			block.appendChild(img);
 			block.appendChild(username_text);
 			block.appendChild(favorite_button);
 				
