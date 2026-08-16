@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Session;
 use App\Models\User;
 use App\Models\Favorite;
@@ -32,59 +34,59 @@ class CollectionController extends BaseController {
     }
 
 
-    public function search_image($search_param){
+    public function search_image($search_param)
+    {
         if(!Session::get('user_id')){
             return [];
         }
 
-        $curl = curl_init(); 
-	
-        $rapid_api_key = "X-RapidAPI-Key: ";
-        $rapid_api_key = $rapid_api_key . env('RAPIDAPI_KEY');
-        curl_setopt_array($curl, [
-            CURLOPT_URL => "https://bing-image-search1.p.rapidapi.com/images/search?q=$search_param",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => [
-                "X-RapidAPI-Host: bing-image-search1.p.rapidapi.com",
-                $rapid_api_key
-            ],
-        ]);
-    
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-    
-        curl_close($curl);
-    
-        if ($err) {
-            return [];
+        $search_param = trim(urldecode($search_param));
+
+        if ($search_param === '') {
+            return response()->json([
+                'results' => []
+            ]);
         }
-        else{;
-            return $response;
+
+        $response = Http::timeout(15)
+            ->acceptJson()
+            ->get('https://api.openverse.org/v1/images/', [
+                'q' => $search_param,
+                'license' => 'cc0,pdm',
+                'page_size' => 15,
+            ]);
+
+        if ($response->failed()) {
+            return response()->json([
+                'error' => 'Openverse image search failed.'
+            ], 502);
         }
+
+        return response()->json($response->json());
     }
 
-    public function add_favorite($url){
-        if(!Session::get('user_id')){
-            return [];
+    public function add_favorite(Request $request)
+    {
+        if(!Session::get('user_id'))
+        {
+            return redirect('login');
         }
 
-        $bing_base_url = 'https://tse4.mm.bing.net/th?id=';
+        $validated = $request->validate([
+            'url' => ['required', 'url', 'max:2048'],
+        ]);
 
         $id_utente = Session::get('user_id');
 
         $favorite = new Favorite;
         $favorite->user_id = $id_utente;
-        $favorite->username = User :: where('id', $id_utente)->value('username');
-        $favorite->url = $bing_base_url .= urldecode($url);
+        $favorite->username = User::where('id', $id_utente)->value('username');
+        $favorite->url = $validated['url'];
         $favorite->save();
 
-        return [];
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     public function remove_favorite($favorite_id){

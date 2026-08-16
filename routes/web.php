@@ -17,7 +17,7 @@ Route::get('home', 'App\Http\Controllers\CollectionController@home');
 Route::get('favorites/list', 'App\Http\Controllers\CollectionController@list');
 Route::get('favorites/add/{name}', 'App\Http\Controllers\CollectionController@add');
 Route::get('search_image/{search_param}', 'App\Http\Controllers\CollectionController@search_image');
-Route::get('add_favorite/{url}', 'App\Http\Controllers\CollectionController@add_favorite');
+Route::get('add_favorite', 'App\Http\Controllers\CollectionController@add_favorite');
 Route::get('remove_favorite/{favorite_id}', 'App\Http\Controllers\CollectionController@remove_favorite');
 Route::get('preferiti', 'App\Http\Controllers\CollectionController@preferiti');
 Route::get('search_user/{search_param}', 'App\Http\Controllers\CollectionController@search_user');

@@ -48,75 +48,106 @@ function onJson(json){
 	
 	const library = document.querySelector('#library-view');
 	library.innerHTML = '';
+
+	if (!json.results || json.results.length === 0) {
+        const error = document.createElement('span');
+        const error_text = document.createTextNode('No images found');
+
+        error.appendChild(error_text);
+        error.classList.add('error');
+        header_view.appendChild(error);
+
+        return;
+    }
 	
-	for(let i = 0; i < 15; i++){
-		const cover_url = json.value[i].thumbnailUrl;
-		
-		urls[i] = json.value[i].thumbnailUrl;
-		jsons[i] = json;
-		
-		const block = document.createElement('div');
-		const favorite_button = document.createElement('a');
-		
-		block.setAttribute('data-index', i);
-		favorite_button.setAttribute('data-index', i);
-		
-		block.classList.add('block');
-		favorite_button.classList.add('favorite_button');
-		
-		var favorite_button_text = document.createTextNode("Aggiungi ai preferiti");
-		favorite_button.appendChild(favorite_button_text);
-		
-		const img = document.createElement('img');
-		img.src = cover_url;
-		
-		block.appendChild(img);
-		block.appendChild(favorite_button);
-		
-		library.appendChild(block);
-	}
-	
-	const celle = document.querySelectorAll('.favorite_button');
-	for (const cella of celle)
-	{
-		cella.addEventListener("click", seleziona);
-	}
+    urls = [];
+    jsons = [];
+
+    for (let i = 0; i < json.results.length; i++) {
+        const result = json.results[i];
+        const cover_url = result.thumbnail;
+
+        urls[i] = result.url;
+        jsons[i] = result;
+
+        const block = document.createElement('div');
+        const favorite_button = document.createElement('a');
+
+        block.setAttribute('data-index', i);
+        favorite_button.setAttribute('data-index', i);
+
+        block.classList.add('block');
+        favorite_button.classList.add('favorite_button');
+
+        const favorite_button_text =
+            document.createTextNode('Aggiungi ai preferiti');
+
+        favorite_button.appendChild(favorite_button_text);
+
+        const img = document.createElement('img');
+        img.src = cover_url;
+        img.alt = result.title || 'Openverse image';
+
+        block.appendChild(img);
+        block.appendChild(favorite_button);
+
+        library.appendChild(block);
+    }
+
+    const buttons = document.querySelectorAll('.favorite_button');
+
+    for (const button of buttons) {
+        button.addEventListener('click', seleziona);
+    }
 }
 
-function seleziona(event){
-	buttons = document.querySelectorAll('.favorite_button');
-	
-	let n = 0;
-	for (const button of buttons)
-	{
-		button.setAttribute('data-index_array', n);
-		n++;
-	}
-	
-	const container = event.currentTarget;
-	
-	let indiceDaSegnareDatabase = parseInt(container.dataset.index);
-	let indiceDaSegnare = parseInt(container.dataset.index_array);
-	
-	buttons[indiceDaSegnare].classList.remove('favorite_button');
-	
-	buttons[indiceDaSegnare].removeEventListener("click", seleziona);
-	
-	let testoDaRimuovere = buttons[indiceDaSegnare].childNodes[0];
-	
-	buttons[indiceDaSegnare].removeChild(testoDaRimuovere);
-	
-	buttons[indiceDaSegnare].classList.add('favorite_added');
-	
-	var favorite_added_text = document.createTextNode("Aggiunto ai preferiti!");
+function seleziona(event) {
+    buttons = document.querySelectorAll('.favorite_button');
+
+    let n = 0;
+    for (const button of buttons) {
+        button.setAttribute('data-index_array', n);
+        n++;
+    }
+
+    const container = event.currentTarget;
+
+    let indiceDaSegnareDatabase = parseInt(container.dataset.index);
+    let indiceDaSegnare = parseInt(container.dataset.index_array);
+
+    buttons[indiceDaSegnare].classList.remove('favorite_button');
+
+    buttons[indiceDaSegnare].removeEventListener('click', seleziona);
+
+    let testoDaRimuovere = buttons[indiceDaSegnare].childNodes[0];
+
+    buttons[indiceDaSegnare].removeChild(testoDaRimuovere);
+
+    buttons[indiceDaSegnare].classList.add('favorite_added');
+
+    var favorite_added_text = document.createTextNode('Aggiunto ai preferiti!');
 	buttons[indiceDaSegnare].appendChild(favorite_added_text);
-	
-	
-	const imageUrl = urls[indiceDaSegnareDatabase]
-	const formData = new FormData();
-	formData.append("url", 1);
-	fetch(BASE_URL + "add_favorite/" + encodeURI(urls[indiceDaSegnareDatabase].substring(31))).then(onResponseFavorite).then(onFavorite);
-	
+
+    const imageUrl = urls[indiceDaSegnareDatabase];
+
+    fetch(BASE_URL + 'add_favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute('content')
+        },
+        body: JSON.stringify({
+            url: imageUrl
+        })
+    })
+    .then(onResponseFavorite)
+    .then(onFavorite)
+    .catch(function(error) {
+        console.error('Errore durante il salvataggio del preferito:', error);
+    });
 }
 
 function onResponseUser(response) {
