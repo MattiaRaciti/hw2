@@ -93,19 +93,20 @@ header {
 
 
 #library-view .block {
-  margin: 10px;
+  margin: 0px;
   border: 1px solid slategray;
   padding: 10px;
-  max-width: 250px;  
-  max-height: 250px; 
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
-  flex-direction:column;
-  background-color: white; 
+  flex-direction: column;
+  background-color: white;
 }
 
-#library-view .block img{
-	width: 100%;
-	height: 85%;
+#library-view .block img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
 }
 
 #library-view .block:hover {
@@ -118,11 +119,12 @@ header {
 }
 
 #library-view {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
   padding: 0px;
   margin: 15px 20px;
+  align-items: start;
 }
 
 body {
@@ -135,5 +137,25 @@ body {
 @media (max-width: 875px) {
   a2 {
     display:none;
+  }
+}
+
+@media (max-width: 1400px) {
+  #library-view {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 900px) {
+  #library-view {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 500px) {
+  #library-view {
+    grid-template-columns: 1fr;
   }
 }

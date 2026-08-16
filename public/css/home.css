@@ -352,14 +352,15 @@ footer p {
 }
 
 #library-view {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
   padding: 0px;
   margin-top: 10px;
   margin-bottom: 350px;
   margin-left: 20px;
   margin-right: 20px;
+  align-items: start;
 }
 
 
@@ -384,19 +385,22 @@ footer p {
 }
 
 #library-view .block {
-  margin: 10px;
+  margin: 0px;
   border: 1px solid slategray;
   padding: 10px;
-  max-width: 250px;  
-  max-height: 250px; 
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  box-sizing: border-box;
   display: flex;
-  flex-direction:column;
-  background-color: white; 
+  flex-direction: column;
+  background-color: white;
 }
 
-#library-view .block img{
-	width: 100%;
-	height: 85%;
+#library-view .block img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
 }
 
 #library-view .user_block {
@@ -416,19 +420,21 @@ footer p {
 }
 
 #library-view .collection {
-  margin: 10px;
+  margin: 0px;
   border: 1px solid slategray;
   padding: 10px;
-  max-width: 250px;  
-  max-height: 250px; 
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
   display: flex;
-  flex-direction:column;
-  background-color: white; 
+  flex-direction: column;
+  background-color: white;
 }
 
-#library-view .collection img{
-	width: 100%;
-	height: 100%;
+#library-view .collection img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
 }
 
 #library-view .block:hover {
@@ -487,5 +493,25 @@ footer p {
 @media (max-width: 860px) {
   body {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 1400px) {
+  #library-view {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 900px) {
+  #library-view {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 500px) {
+  #library-view {
+    grid-template-columns: 1fr;
   }
 }
