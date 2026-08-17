@@ -320,20 +320,23 @@ html {
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 145px;
-	
-	padding-top: 30px;
-	background-color: rgb(55, 103, 133);
-	color: rgb(0, 0, 0);
-	text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 145px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  background-color: rgb(55, 103, 133);
+  color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 
 footer p {
+  margin: 12px 0;
   color: rgb(0, 0, 0);
+  font-size: 0.9em;
+  line-height: 1.5;
   text-align: center;
 }
 

@@ -6,7 +6,7 @@ fetch(BASE_URL + "favorites/list").then(onResponseFavorite).then(onFavorite);
 fetch(BASE_URL + "get_like_number").then(onResponseLikeNumber).then(onLikeNumber);
 
 function onResponseLikeNumber(response) {
-  console.log('Risposta ricevuta');
+  console.log('Response received');
   return response.json();
 }
   
@@ -23,12 +23,8 @@ function onLikeNumber(json){
 	const header_view = document.querySelector('#links');
 	
 	const header = document.createElement('a2');
-	if(likes != 1){
-		var header_text = document.createTextNode("La tua collezione piace a " + likes + " persone");
-	}
-	else{
-		var header_text = document.createTextNode("La tua collezione piace a " + likes + " persona");
-	}
+
+	var header_text = document.createTextNode("Your collection has " + likes + " likes");
 
 	header.appendChild(header_text);
 	header_view.appendChild(header);
@@ -36,7 +32,7 @@ function onLikeNumber(json){
 }
 
 function onResponseFavorite(response) {
-  console.log('Risposta ricevuta');
+  console.log('Response received');
   return response.json();
 }
 
@@ -60,7 +56,7 @@ function onFavorite(json){
 			block.classList.add('block');
 			favorite_button.classList.add('favorite_button');
 			
-			var favorite_button_text = document.createTextNode("Elimina dai preferiti");
+			var favorite_button_text = document.createTextNode("Remove from favorites");
 			favorite_button.appendChild(favorite_button_text);
 			
 			const img = document.createElement('img');
@@ -84,7 +80,7 @@ function onFavorite(json){
 		error_view.innerHTML = '';
 		
 		const error = document.createElement('span');
-		var error_text = document.createTextNode("Non hai ancora salvato nessun immagine preferita");
+		var error_text = document.createTextNode("You haven't saved any favorite images yet");
 		
 		error.appendChild(error_text);
 		error.classList.add('error');

@@ -13,20 +13,20 @@
         <section class="main_piscturesDB">
 			<h1>PicturesDB</h1>
 			<div id = "details">
-				<motto> Colleziona immagini e condividile con i tuoi amici!</motto>
+				<motto> Collect images and share them with your friends!</motto>
 			</div>
-            <h3>ACCEDI</h3>
+            <h3>LOG IN</h3>
 
             @if($error == 'empty_fields')
-            <span class = "error"> Compilare tutti i campi </span>
+            <span class = "error"> Please fill in all fields. </span>
             @elseif($error == 'wrong')
-            <span class = "error"> Credenziali non valide </span>
+            <span class = "error"> 	The username or password is incorrect. </span>
             @endif
 
             <form name='login' method='post'>
                 @csrf
                 <div class="username">
-                    <div><label for='username'>Nome utente</label></div>
+                    <div><label for='username'>Username</label></div>
                     <div><input type='text' name='username' value = '{{ old("username") }}'></div>
                 </div>
                 <div class="password">
@@ -34,14 +34,14 @@
                     <div><input type='password' name='password' value = '{{ old("password") }}'></div>
                 </div>
                 <div class="submit">
-                    <input type='submit' value="Accedi" id = "submit">
+                    <input type='submit' value="Log in" id = "submit">
                 </div>
             </form>
-            <div class="signup">Non hai un account? <a href="{{ url('signup')}}" class = "button">Iscriviti</a>
+            <div class="signup">Don't have an account? <a href="{{ url('signup')}}" class = "button">Create an account</a>
         </section>
         </main>
 		<footer>
-			<p>Realizzato da: <strong>Mattia Raciti 1000001206</strong></p>
+			<p>Built by Mattia Raciti</p>
 		</footer>
     </body>
 </html>

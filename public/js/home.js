@@ -187,9 +187,9 @@ function onJsonUser(json){
 			
 			const username_text = document.createElement('span');
 
-			const username_label = document.createTextNode('UTENTE:');
+			const username_label = document.createTextNode('USER:');
 			const username_value = document.createTextNode(username);
-			const member_since_label = document.createTextNode('ISCRITTO DAL:');
+			const member_since_label = document.createTextNode('MEMBER SINCE:');
 			const member_since_value = document.createTextNode(created_at.substring(0, 10));
 
 			username_text.appendChild(username_label);
@@ -200,7 +200,7 @@ function onJsonUser(json){
 			username_text.appendChild(document.createElement('br'));
 			username_text.appendChild(member_since_value);
 			
-			var favorite_button_text = document.createTextNode("Visualizza Preferiti");
+			var favorite_button_text = document.createTextNode("View favorites");
 			
 			favorite_button.appendChild(favorite_button_text);
 			
@@ -259,13 +259,13 @@ function onFavoriteUser(json){
 			console.log(json);
 			
 			const header = document.createElement('h1');
-			var header_text = document.createTextNode("Preferiti di " + json.content[0].username + ": ");
+			var header_text = document.createTextNode(json.content[0].username + "'s favorites");
 			header.appendChild(header_text);
 			header_view.appendChild(header);
 			
 			const like_button = document.createElement('a');
 			like_button.classList.add('like_button');
-			var like_text = document.createTextNode("Mi Piace");
+			var like_text = document.createTextNode("Like");
 			like_button.appendChild(like_text);
 			header_view.appendChild(like_button);
 			
@@ -297,13 +297,13 @@ function onFavoriteUser(json){
 			const header_view = document.querySelector('#header-view');
 			
 			const header = document.createElement('h1');
-			var header_text = document.createTextNode("Preferiti di " + json.content[0].username + ": ");
+			var header_text = document.createTextNode(json.content[0].username + "'s favorites");
 			header.appendChild(header_text);
 			header_view.appendChild(header);
 			
 			const like_button = document.createElement('a');
 			like_button.classList.add('undo_like');
-			var like_text = document.createTextNode("Non mi piace più");
+			var like_text = document.createTextNode("Unlike collection");
 			like_button.appendChild(like_text);
 			header_view.appendChild(like_button);
 			
@@ -335,7 +335,7 @@ function onFavoriteUser(json){
 		const error_view = document.querySelector('#header-view');
 			
 			const error = document.createElement('h1');
-			var error_text = document.createTextNode(json.username + " non ha ancora salvato alcuna immagine preferita");
+			var error_text = document.createTextNode(json.username + " hasn't saved any favorite images yet.");
 			error.appendChild(error_text);
 			error_view.appendChild(error);
 			error.classList.add('error');
@@ -343,7 +343,7 @@ function onFavoriteUser(json){
 }
 
 function sendLike(){
-	console.log("Like ricevuto!");
+	console.log("Like received!");
 	const like_button_selected = document.querySelector('.like_button');
 	let username = like_button_selected.dataset.index;
 	like_button_selected.removeEventListener("click", sendLike);
@@ -358,7 +358,7 @@ function sendLike(){
 	
 	like_button_selected.classList.add('undo_like');
 	
-	var undo_like_text = document.createTextNode("Non mi piace più");
+	var undo_like_text = document.createTextNode("Unlike collection");
 	
 	like_button_selected.appendChild(undo_like_text);
 	
@@ -388,7 +388,7 @@ function onResponseUndoLike(){
 	
 	like_button_selected.classList.add('like_button');
 	
-	var like_text = document.createTextNode("Mi Piace");
+	var like_text = document.createTextNode("Like");
 	
 	like_button_selected.appendChild(like_text);
 	

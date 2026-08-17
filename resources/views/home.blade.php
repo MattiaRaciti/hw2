@@ -20,8 +20,8 @@
         <div id="links">
           <a2>PicturesDB</a2>
           <a href="{{ url('home') }}" class="button">Clear</a>
-          <a href="{{ url('preferiti') }}" class="button">Preferiti</a>
-          <a href="{{ url('login') }}" class="button_b">Logout</a>
+          <a href="{{ url('preferiti') }}" class="button">Favorites</a>
+          <a href="{{ url('login') }}" class="button_b">Log out</a>
 
           <div id="details">
           </div>
@@ -35,22 +35,22 @@
       </nav>
 
       <h1>
-        <strong>Ricerca Immagini</strong><br/>
-        <em>Colleziona immagini e condividile con i tuoi amici!</em><br/>
-        <br><a3>Benvenuto, {{ $username }}!</a3></br>
+        <strong>Image Search</strong><br/>
+        <em>Collect images and share them with your friends!</em><br/>
+        <br><a3>Welcome, {{ $username }}!</a3></br>
       </h1>
     </header>
 
     <section id="search-view">
       <form>
         <label>
-          Cerca:
+          Search:
           <input type="text" name="content" id="content">
         </label>
 
         <select name="tipo" id="tipo">
-          <option value="image">Immagine</option>
-          <option value="user">Utente</option>
+          <option value="image">Image</option>
+          <option value="user">User</option>
         </select>
 
         <label>
@@ -66,12 +66,8 @@
     </section>
 
     <footer>
-      <address>
-        Powered by: Openverse API
-      </address>
-      <p>
-        Realizzato da: <strong>Mattia Raciti 1000001206</strong>
-      </p>
+      <p>Image search powered by the Openverse API</p>
+      <p>Built by Mattia Raciti</p>
     </footer>
   </body>
 </html>
