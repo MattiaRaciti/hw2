@@ -88,6 +88,16 @@ function onJson(json){
         img.src = cover_url;
         img.alt = result.title || 'Openverse image';
 
+		img.addEventListener('error', function() {
+    		block.remove();
+		});
+
+		img.src = cover_url;
+
+		if (img.complete && img.naturalWidth === 0) {
+			block.remove();
+		}
+
         block.appendChild(img);
         block.appendChild(favorite_button);
 

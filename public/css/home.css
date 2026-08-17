@@ -403,6 +403,10 @@ footer p {
   object-fit: cover;
 }
 
+#library-view .block img:not([src]) {
+  display: none;
+}
+
 #library-view .user_block {
   margin: 10px;
   border: 1px solid slategray;

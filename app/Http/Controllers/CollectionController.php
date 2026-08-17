@@ -53,7 +53,7 @@ class CollectionController extends BaseController {
             ->get('https://api.openverse.org/v1/images/', [
                 'q' => $search_param,
                 'license' => 'cc0,pdm',
-                'page_size' => 15,
+                'page_size' => 18,
             ]);
 
         if ($response->failed()) {
