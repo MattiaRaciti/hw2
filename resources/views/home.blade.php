@@ -66,8 +66,11 @@
     </section>
 
     <footer>
-      <p>Image search powered by the Openverse API</p>
-      <p>Built by Mattia Raciti</p>
+        <p>
+            Image search powered by the Openverse API.
+            This application is not endorsed or certified by Openverse.
+        </p>
+        <p>Built by Mattia Raciti</p>
     </footer>
   </body>
 </html>

@@ -307,41 +307,71 @@ section {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   color: rgba(26, 26, 26, .7);
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 21px;
   margin: 0;
-  margin-bottom: 145px;
 }
 
-html {
-  position: relative;
+html,
+body {
+  margin: 0;
+  padding: 0;
   min-height: 100%;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 145px;
-  padding-top: 30px;
+  height: 125px;
+  flex: 0 0 125px;
   box-sizing: border-box;
-  background-color: rgb(55, 103, 133);
-  color: rgb(0, 0, 0);
+  margin-top: auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #3d718f;
+  color: #111111;
+
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
   text-align: center;
 }
 
-
 footer p {
-  margin: 12px 0;
-  color: rgb(0, 0, 0);
-  font-size: 0.9em;
-  line-height: 1.5;
+  width: auto;
+  margin: 0;
+  color: #111111;
   text-align: center;
+  line-height: 1.4;
+}
+
+footer p + p {
+  margin-top: 0;
+  font-size: 17px;
+}
+
+footer {
+  row-gap: 12px;
 }
 
 #header-view {
-	margin: 5px 20px;
+  margin: 5px 20px;
 	
 	display: flex;
 	justify-content: space-evenly;
@@ -358,14 +388,10 @@ footer p {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
-  padding: 0px;
-  margin-top: 10px;
-  margin-bottom: 350px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 0;
+  margin: 10px 20px 30px;
   align-items: start;
 }
-
 
 #library-view .album{
 	display: flex;
@@ -520,5 +546,14 @@ footer p {
 @media (max-width: 500px) {
   #library-view {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  footer {
+    height: auto;
+    min-height: 125px;
+    flex-basis: auto;
+    padding: 20px;
   }
 }

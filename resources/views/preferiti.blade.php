@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="./css/preferiti.css">
 		<script src="{{ url('js/preferiti.js') }}" defer="true"></script>
 	</head>
+
+	<body>
 		<header>
 			<div>
 				<h1>
@@ -24,15 +26,20 @@
 		<nav id="links">
 			<a href="{{url('home')}}" class="button">Back</a>
 		</nav>
-		<section id = "error-view">
-		
+
+		<section id = "error-view">	
 		</section>
 		
 		<section id = "library-view">
-		
 		</section>
-	<body>
-</html>
 
-<section id = "library-view">
-  </section>
+		<footer>
+			<p>
+				Image search powered by the Openverse API.
+				This application is not endorsed or certified by Openverse.
+			</p>
+
+        	<p>Built by Mattia Raciti</p>
+    	</footer>
+	</body>
+</html>

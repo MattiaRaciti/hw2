@@ -5,6 +5,7 @@
             const BASE_URL = "{{ url('/') }}/"
         </script>
 
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
         <link rel='stylesheet' href='./css/signup.css'>
         <script src='./js/signup.js' defer></script>
 
